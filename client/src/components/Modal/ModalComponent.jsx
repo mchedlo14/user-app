@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import {Button, Modal, FormGroup, } from 'react-bootstrap';
+import {Button, Modal } from 'react-bootstrap';
 import {Input} from 'antd'
 import axios from 'axios';
+
+
 const ModalComponent = ({modalOpen,setModalOpen,setIsDeleteOperation}) => {
   const [newUser,setNewUser] = useState({
     name: "",
     email: "",
-    gender: "",
+    gender: "male",
     address: {
         street: "",
         city: ""
@@ -19,28 +21,47 @@ const ModalComponent = ({modalOpen,setModalOpen,setIsDeleteOperation}) => {
     const response = await axios.post('http://localhost:3000/users', newUser)
     console.log(response)
     setIsDeleteOperation(true)
+    setModalOpen(false)
   }
+
+  const handleCloseModal = () => {
+    setModalOpen(false)
+  }
+
+  const select_gender = ['Female', 'Male']
 
   return (
     <>
         <Modal show={modalOpen}>
             <Modal.Header>Add row in table</Modal.Header>
+            
             <Modal.Body>
-              <input placeholder='Name' onChange={e => newUser.name = e.target.value}/>  
-              <input placeholder='Email' onChange={e => newUser.email = e.target.value}/>
+              <Input placeholder='Name' onChange={e => newUser.name = e.target.value} style={{marginTop:10}} allowClear></Input>
+              <Input placeholder='Email' onChange={e => newUser.email = e.target.value} style={{marginTop:10}} allowClear></Input>
+              
 
               <select onChange={e => newUser.gender = e.target.value}>
-                <option value='male'>male</option>
-                <option value='female'>female</option>
+                <option disabled>Choose gender</option>
+                <option value='male'>Male</option>
+                <option value='Female'>Female</option>
               </select>
 
-              <input placeholder='Street' onChange={e => newUser.address.street = e.target.value}/>   
-              <input placeholder='City' onChange={e => newUser.address.city = e.target.value}/> 
-              <input placeholder='Phone' onChange={e => newUser.phone = e.target.value}/>     
+              {/* <Select placeholder='Choose Gender' onChange={e => newUser.gender = e.target.value} style={{width:465, marginTop:10}}> */}
+                {/* {
+                  select_gender.map((el,index) => {
+                    return <Select.Option value={el} key={index}>{el}</Select.Option>
+                  })
+                } */}
+              {/* </Select> */}
+
+              <Input placeholder='Street' onChange={e => newUser.address.street = e.target.value} style={{marginTop:10}} allowClear></Input>
+              <Input placeholder='City' onChange={e => newUser.address.city = e.target.value} style={{marginTop:10}} allowClear></Input>
+              <Input placeholder='Phone' onChange={e => newUser.phone = e.target.value} style={{marginTop:10}} allowClear></Input>
             </Modal.Body>
+
             <Modal.Footer>
                 <Button onClick={handleAddUser}>Add User</Button>
-                <Button onClick={() => setModalOpen(false)}>Close Modal</Button>
+                <Button onClick={handleCloseModal}>Close Modal</Button>
             </Modal.Footer>
         </Modal>
     </>

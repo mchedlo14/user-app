@@ -17,14 +17,15 @@ code {
     position: relative;
   } */
 .add-btn{
-  padding: 8px 20px;
+  width: 200px;
+  height: 40px;
   cursor: pointer;
   background-color: #00AB66;
   border: 0;
   border-radius: 4px;
-  right: 200px;
   color: white;
-  float: right;
+  margin-left: 50%;
+  transform: translateX(-50%);
   
 }
 .add-btn:hover{
@@ -57,4 +58,24 @@ select{
   padding: 10px;
   outline: 0;
   border: 0;
+}
+
+.page-wrapper{
+  width: 300px;
+  height: 80px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+
+.pag-text{
+  font-size: 25px;
+  cursor: pointer;
+  padding: 0;
+}
+.pag-text:hover{
+  color: rgb(143, 143, 143);
+  transition: all 0.5s;
 }
