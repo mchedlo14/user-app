@@ -1,0 +1,10 @@
+.chart-wrapper {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 80px;
+}/*# sourceMappingURL=Chart.css.map */

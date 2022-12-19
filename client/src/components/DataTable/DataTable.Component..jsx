@@ -1,12 +1,13 @@
-import axios from "axios"
-import DataTable from "react-data-table-component"
+import axios from "axios";
+import DataTable from "react-data-table-component";
 import { StyledDataTable } from "./DataTable.Styled";
 import { useState, useEffect } from "react";
 import '../../index.css';
-// import { Button } from "react-bootstrap";
 import ModalComponent from "../Modal/ModalComponent";
 import {Button, Modal } from 'react-bootstrap';
-import {Input} from 'antd'
+import {Input} from 'antd';
+import Chart from "../Chart/Chart";
+
 
 
 
@@ -93,8 +94,6 @@ function App() {
     dataObj.phone = row.phone
     dataObj.address.city = row.address.city
     dataObj.address.street = row.address.street
-
-    
   }
 
   const handleAddUser = async () => {
@@ -106,7 +105,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <StyledDataTable>
+      <StyledDataTable style={{marginTop:40}}>
           <DataTable
             title="User Data"
             columns={columns}
@@ -148,6 +147,8 @@ function App() {
         <Button className="add-btn" onClick={() => setModalOpen(true)}>Add User</Button>
           <ModalComponent setModalOpen={setModalOpen} modalOpen={modalOpen} setIsDeleteOperation={setIsDeleteOperation}/>
       </StyledDataTable>
+
+      <Chart />
     </div>
   )
 }
