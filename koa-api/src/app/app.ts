@@ -1,9 +1,9 @@
-import * as Koa from "koa";
+import * as cors from "@koa/cors";
 import * as HttpStatus from "http-status-codes";
+import * as Koa from "koa";
 import * as bodyParser from "koa-bodyparser";
-import * as cors from "@koa/cors"
 import * as logger from "koa-logger";
-
+import analyticsController from "../analytics/analytics.controller";
 import usersController from "../users/users.controller";
 
 const app: Koa = new Koa();
@@ -20,12 +20,16 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
     }
 });
 
-// Route middleware.
+// Middleware.
 app.use(cors());
 app.use(logger());
-app.use(bodyParser())
+app.use(bodyParser());
+
+// Route middleware.
 app.use(usersController.routes());
 app.use(usersController.allowedMethods());
+app.use(analyticsController.routes());
+app.use(analyticsController.allowedMethods());
 
 // Application error logging.
 app.on("error", console.error);

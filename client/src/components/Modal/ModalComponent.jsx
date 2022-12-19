@@ -28,8 +28,6 @@ const ModalComponent = ({modalOpen,setModalOpen,setIsDeleteOperation}) => {
     setModalOpen(false)
   }
 
-  const select_gender = ['Female', 'Male']
-
   return (
     <>
         <Modal show={modalOpen}>
@@ -40,19 +38,12 @@ const ModalComponent = ({modalOpen,setModalOpen,setIsDeleteOperation}) => {
               <Input placeholder='Email' onChange={e => newUser.email = e.target.value} style={{marginTop:10}} allowClear></Input>
               
 
-              <select onChange={e => newUser.gender = e.target.value}>
+              <select onChange={e => newUser.gender = e.target.value} style={{marginTop:10}}>
                 <option disabled>Choose gender</option>
                 <option value='male'>Male</option>
                 <option value='Female'>Female</option>
               </select>
 
-              {/* <Select placeholder='Choose Gender' onChange={e => newUser.gender = e.target.value} style={{width:465, marginTop:10}}> */}
-                {/* {
-                  select_gender.map((el,index) => {
-                    return <Select.Option value={el} key={index}>{el}</Select.Option>
-                  })
-                } */}
-              {/* </Select> */}
 
               <Input placeholder='Street' onChange={e => newUser.address.street = e.target.value} style={{marginTop:10}} allowClear></Input>
               <Input placeholder='City' onChange={e => newUser.address.city = e.target.value} style={{marginTop:10}} allowClear></Input>

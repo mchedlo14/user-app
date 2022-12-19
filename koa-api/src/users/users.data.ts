@@ -691,4 +691,4 @@ export const usersData = [
         },
         "phone": "+1 (815) 425-3440"
     }
-]
+];
